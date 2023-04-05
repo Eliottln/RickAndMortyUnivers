@@ -1,4 +1,4 @@
-package com.example.rickandmortyunivers.domain
+package com.example.rickandmortyunivers.service
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -25,7 +25,7 @@ object ApiClient {
             .build()
     }
 
-    val apiService: ApiService by lazy {
+        val apiService: ApiService by lazy {
         retrofit.create(ApiService::class.java)
     }
 }

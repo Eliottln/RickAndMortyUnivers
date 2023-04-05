@@ -1,19 +1,19 @@
 package com.example.rickandmortyunivers.ui.characters.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rickandmortyunivers.data.Character
 import com.example.rickandmortyunivers.databinding.ItemTitleAndImageBinding
 
-class CharactersAdapter(val context: Context, private var onItemClicked: ((id: Int) -> Unit)): RecyclerView.Adapter<CharactersAdapter.ViewHolder>() {
+class CharactersAdapter(private var onItemClicked: ((id: Int) -> Unit)): RecyclerView.Adapter<CharactersAdapter.ViewHolder>() {
 
     var charactersList: ArrayList<Character> = arrayListOf()
 
     inner class ViewHolder(private val binding: ItemTitleAndImageBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(character: Character) = binding.apply {
-
+            binding.nameTv.text = character.name
+            binding.statusTv.text = character.status
             root.setOnClickListener {
                 onItemClicked(character.id)
             }
