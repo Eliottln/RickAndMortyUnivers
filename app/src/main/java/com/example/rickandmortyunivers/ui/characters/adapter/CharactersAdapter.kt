@@ -1,10 +1,14 @@
 package com.example.rickandmortyunivers.ui.characters.adapter
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import com.example.rickandmortyunivers.data.model.CharacterModel
 
-class CharactersAdapter(private var onItemClicked: ((id: Int) -> Unit)): RecyclerView.Adapter<CharacterItemViewHolder>() {
+class CharactersAdapter(
+    diffCallback: DiffUtil.ItemCallback<CharacterModel>,
+    private var onItemClicked: ((id: Int) -> Unit)
+) : PagingDataAdapter<CharacterModel, CharacterItemViewHolder>(diffCallback) {
 
     var charactersList: ArrayList<CharacterModel> = arrayListOf()
 
@@ -14,7 +18,8 @@ class CharactersAdapter(private var onItemClicked: ((id: Int) -> Unit)): Recycle
     }
 
     override fun onBindViewHolder(holder: CharacterItemViewHolder, position: Int) {
-        holder.bind(charactersList[position], onItemClicked)
+        val item = getItem(position)
+        holder.bind(item, onItemClicked)
     }
 
     override fun getItemCount(): Int {

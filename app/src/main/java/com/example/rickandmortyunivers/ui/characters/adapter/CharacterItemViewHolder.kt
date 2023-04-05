@@ -23,14 +23,16 @@ class CharacterItemViewHolder private constructor(
         }
     }
 
-    fun bind(characterModel: CharacterModel, onItemClicked: ((id: Int) -> Unit)) {
-        binding.avatarIv.load(characterModel.image)
-        binding.nameTv.text = characterModel.name
-        binding.statusTv.text = characterModel.status
-        binding.locationTv.text = characterModel.location?.name
-        binding.originTv.text = characterModel.origin?.name
-        binding.root.setOnClickListener {
-            onItemClicked(characterModel.id)
+    fun bind(characterModel: CharacterModel?, onItemClicked: ((id: Int) -> Unit)) {
+        characterModel?.let {
+            binding.avatarIv.load(characterModel.image)
+            binding.nameTv.text = characterModel.name
+            binding.statusTv.text = characterModel.status
+            binding.locationTv.text = characterModel.location?.name
+            binding.originTv.text = characterModel.origin?.name
+            binding.root.setOnClickListener {
+                onItemClicked(characterModel.id)
+            }
         }
     }
 
