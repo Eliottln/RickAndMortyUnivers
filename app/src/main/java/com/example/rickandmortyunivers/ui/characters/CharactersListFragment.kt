@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.rickandmortyunivers.data.Character
+import com.example.rickandmortyunivers.data.model.CharacterModel
 import com.example.rickandmortyunivers.databinding.FragmentCharactersListBinding
 import com.example.rickandmortyunivers.ui.characters.adapter.CharactersAdapter
 
@@ -35,7 +35,8 @@ class CharactersListFragment : Fragment() {
         binding.rvCharacters.adapter = adapter
         binding.rvCharacters.layoutManager = LinearLayoutManager(requireContext())
         viewModel.charactersList.observe(viewLifecycleOwner) {
-            adapter.charactersList = it as ArrayList<Character>
+            adapter.charactersList = it as ArrayList<CharacterModel>
+            adapter.notifyDataSetChanged()
         }
         return binding.root
     }
