@@ -1,4 +1,4 @@
-package com.example.rickandmortyunivers.domain.usecase
+package com.example.rickandmortyunivers.domain
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.rickandmortyunivers.data.model.CharacterModel

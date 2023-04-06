@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyunivers.databinding.FragmentCharactersListBinding
-import com.example.rickandmortyunivers.domain.usecase.CharacterComparator
+import com.example.rickandmortyunivers.domain.CharacterComparator
 import com.example.rickandmortyunivers.ui.characters.adapter.CharactersAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -45,7 +45,7 @@ class CharactersListFragment : Fragment() {
         binding.rvCharacters.adapter = adapter
         binding.rvCharacters.layoutManager = LinearLayoutManager(requireContext())
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.flow.collectLatest { pagingData ->
                 adapter.submitData(pagingData)
             }

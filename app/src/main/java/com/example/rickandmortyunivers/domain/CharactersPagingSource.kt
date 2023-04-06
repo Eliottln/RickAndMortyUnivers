@@ -1,12 +1,13 @@
-package com.example.rickandmortyunivers.domain.usecase
+package com.example.rickandmortyunivers.domain
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.rickandmortyunivers.data.model.CharacterModel
 import com.example.rickandmortyunivers.data.repository.CharacterRepository
+import com.example.rickandmortyunivers.service.ApiService
 
 class CharactersPagingSource(
-    private val backend: CharacterRepository,
+    private val backend: ApiService,
 ) : PagingSource<Int, CharacterModel>() {
     override suspend fun load(
         params: LoadParams<Int>
