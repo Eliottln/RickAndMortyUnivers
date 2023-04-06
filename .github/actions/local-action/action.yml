@@ -1,0 +1,11 @@
+name: Greeting
+description: Says hello to you
+inputs:
+  first_name:
+    description: 'Your first name’
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Hello ${{ inputs.first_name }}"
+      shell: bash

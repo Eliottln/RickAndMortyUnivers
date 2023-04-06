@@ -1,0 +1,8 @@
+name: Android - push - feature
+on: push
+  branches:
+    - 'feature/*'
+jobs:
+  java_unit_test:
+  #...
+  build_aab:
