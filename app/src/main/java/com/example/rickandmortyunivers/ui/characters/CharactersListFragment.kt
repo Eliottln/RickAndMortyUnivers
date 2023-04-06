@@ -26,13 +26,6 @@ class CharactersListFragment : Fragment() {
         binding = FragmentCharactersListBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[CharactersListViewModelImpl::class.java]
 
-
-
-//        viewModel.charactersList.observe(viewLifecycleOwner) {
-//            adapter.charactersList = it as ArrayList<CharacterModel>
-//            adapter.notifyDataSetChanged()
-//        }
-//        viewModel.getCharacters()
         return binding.root
     }
 

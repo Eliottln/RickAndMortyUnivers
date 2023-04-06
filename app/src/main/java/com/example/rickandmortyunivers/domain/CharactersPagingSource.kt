@@ -3,23 +3,20 @@ package com.example.rickandmortyunivers.domain
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.rickandmortyunivers.data.model.CharacterModel
-import com.example.rickandmortyunivers.data.repository.CharacterRepository
 import com.example.rickandmortyunivers.service.ApiService
 
 class CharactersPagingSource(
-    private val backend: ApiService,
+    private val api: ApiService,
 ) : PagingSource<Int, CharacterModel>() {
     override suspend fun load(
         params: LoadParams<Int>
     ): LoadResult<Int, CharacterModel> {
         try {
             val nextPageNumber = params.key ?: 1
-            val response = backend.getCharacters(nextPageNumber)
-            val data = response?.results
+            val response = api.getCharacters(nextPageNumber)
+            val data = response.results
             val responseData = mutableListOf<CharacterModel>()
-            if (data != null) {
-                responseData.addAll(data)
-            }
+            responseData.addAll(data)
             return LoadResult.Page(
                 data = responseData,
                 prevKey = null, // Only paging forward.

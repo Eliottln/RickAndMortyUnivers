@@ -10,8 +10,6 @@ class CharactersAdapter(
     private var onItemClicked: ((id: Int) -> Unit)
 ) : PagingDataAdapter<CharacterModel, CharacterItemViewHolder>(diffCallback) {
 
-    var charactersList: ArrayList<CharacterModel> = arrayListOf()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterItemViewHolder {
 //        val binding = ItemTitleAndImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CharacterItemViewHolder.newInstance(parent)
@@ -22,7 +20,4 @@ class CharactersAdapter(
         holder.bind(item, onItemClicked)
     }
 
-    override fun getItemCount(): Int {
-        return charactersList.size
-    }
 }
