@@ -11,4 +11,5 @@ data class CharacterModel(
     @SerializedName("image") val image: String?,
     @SerializedName("origin") val origin: LocationModel?,
     @SerializedName("location") val location: LocationModel?,
+    @SerializedName("episode") val episode: ArrayList<String>?,
 )

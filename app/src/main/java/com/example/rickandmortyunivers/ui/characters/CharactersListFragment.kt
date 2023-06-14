@@ -1,5 +1,6 @@
 package com.example.rickandmortyunivers.ui.characters
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -33,7 +34,9 @@ class CharactersListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = CharactersAdapter(CharacterComparator) {
-
+            val intent = Intent(requireContext(), CharacterDetailActivity::class.java)
+            intent.putExtra("id", it)
+            startActivity(intent)
         }
         binding.rvCharacters.adapter = adapter
         binding.rvCharacters.layoutManager = LinearLayoutManager(requireContext())
