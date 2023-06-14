@@ -1,8 +1,18 @@
 name: Android - push - feature
-on: push
-  branches:
-    - 'feature/*'
+on:
+  commit:
+    branches:
+      - 'feature/*'
+
 jobs:
-  java_unit_test:
-  #...
-  build_aab:
+  unit_test:
+    build:
+      runs-on: ubuntu-latest
+
+      steps:
+
+        - name: Change wrapper permissions
+          run: chmod +x ./gradlew
+
+        - name: Run Tests
+          run: ./gradlew test
