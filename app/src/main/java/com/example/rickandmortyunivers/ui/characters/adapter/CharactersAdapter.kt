@@ -11,7 +11,6 @@ class CharactersAdapter(
 ) : PagingDataAdapter<CharacterModel, CharacterItemViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterItemViewHolder {
-//        val binding = ItemTitleAndImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CharacterItemViewHolder.newInstance(parent)
     }
 
